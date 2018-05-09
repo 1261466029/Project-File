@@ -1,0 +1,363 @@
+@charset "utf-8";
+
+@import './page.css';
+
+.page_body .block{
+
+	padding-top:110px;
+
+	padding-bottom:120px;
+
+	position:relative;
+
+}
+
+.page_body .block.block_01{
+
+	padding-bottom:50px;
+
+}
+
+.page_body .block.block_01 .row>div{
+
+	padding:0;
+
+}
+
+.page_body .block_main{
+
+	padding-top:0;
+	
+	background:url("../images/index_main.jpg") center center / 100% 100% no-repeat fixed;
+
+}
+
+.page_body .block_main .index_full_block_main{
+
+	text-align: center;
+
+	position: absolute;
+
+	top: 28%;
+
+	left: 0;
+
+	right: 0;
+
+	margin: auto;
+
+}
+
+.page_body .block_main .index_full_block_main *{
+
+	color:#fff;
+
+}
+
+.page_body .block_main .index_full_block_main .title{
+
+	font-size: 3.8rem;
+
+	margin-top:0;
+
+	padding-bottom:65px;
+
+	margin-bottom:50px;
+
+}
+
+.page_body .block_main .index_full_block_main .detail{
+
+	line-height:normal;
+
+	margin-bottom:35px;
+
+}
+
+.page_body .block_main .index_full_block_main .detail.last{
+
+	font-size:1.2rem;
+
+	margin-bottom:110px;
+
+	text-shadow:0 0 7px rgba(0,0,0,.69);
+
+}
+
+.page_body .block_main .index_full_block_main .btn{
+
+	font-size:1rem;
+
+	border:1px solid #fff;
+
+	padding: 13px 35px;
+
+	border-radius: 0;
+
+}
+
+.page_body .block.block_01 .title.title_01{
+
+	margin-bottom:80px;
+
+	white-space: nowrap;
+
+}
+
+.page_body .block.block_01 .title.title_02{
+
+	padding-bottom:27px;
+
+	margin-bottom:20px;
+
+}
+
+.page_body .block.block_01 .tab .title.title_03{
+
+	margin-top:15px;
+
+	color:#2c3778;
+
+}
+
+.page_body .block.block_01 .tab{
+
+	position:relative;
+
+	top:-60px;
+
+}
+
+.page_body .block.block_01 .tab>div{
+
+	position:relative;
+
+}
+
+.page_body .block.block_02 .title{
+
+	margin-bottom:50px;
+
+}
+
+.page_body .block.block_02 .tab .table_col{
+
+	padding:0;
+
+}
+
+.page_body .block.block_02 .detail{
+
+	padding-top:75px;
+
+}
+
+.page_body .block.block_03{
+
+	background:url( ../images/index_block_03_repeat_background.png );
+
+	background-color:#3e424c;
+
+}
+
+.page_body .block.block_03 .title{
+
+	margin-bottom:130px;
+
+}
+
+.page_body .block .title.title_01 span{
+
+	font-size:3.5rem;
+
+}
+
+.page_body .block.block_03 .title.title_01 span{
+
+	font-size:4rem;
+
+}
+
+.page_body .block.block_03 .title.title_01{
+
+	font-size:2.6rem;
+
+}
+
+@media( max-width:1600px ){
+
+	.page_body .block_main .index_full_block_main .title{
+
+		padding-bottom:40px;
+
+		margin-bottom:50px;
+
+	}
+
+	.page_body .block_main .index_full_block_main .detail{
+
+		margin-bottom:30px;
+
+	}
+
+	.page_body .block_main .index_full_block_main .detail.last{
+
+		margin-bottom:80px;
+
+	}
+
+}
+
+@media( max-width:1200px ){
+
+	.page_body .block.block_01 .tab{
+
+		top:0;
+
+	}
+
+	.page_body .block_main .index_full_block_main{
+
+		top: 25%;
+
+	}
+
+	.page_body .block_main .index_full_block_main .title{
+
+		padding-bottom:10px;
+
+		margin-bottom:40px;
+
+		font-size:2.8rem;
+
+	}
+
+	.page_body .block_main .index_full_block_main .detail{
+
+		margin-bottom:50px;
+
+	}
+
+	.page_body .block_main .index_full_block_main .detail.last{
+
+		margin-bottom:50px;
+
+	}
+
+	.page_body .block.block_01 .detail.detail_01{
+
+		margin-bottom:50px;
+
+	}
+
+}
+
+@media( max-width:991px ){
+
+	.page_body .block.block_01 .tab .detail br{
+
+		display:none;
+
+	}
+
+	.page_body .block.block_01 .tab .detail{
+
+		padding:0 5px;
+
+	}
+
+}
+
+@media( min-width:769px ){
+
+	.page_body .block.block_01 .tab>div:after{
+
+		content:'';
+
+		position:absolute;
+
+		top:33%;
+
+		height:1px;
+
+		width:100%;
+
+		left:0;
+
+		border-bottom:2px dashed #afafaf;
+
+		z-index:-1;
+
+	}
+
+	.page_body .block.block_01 .tab>div:first-child:after{
+
+		left:50%;
+
+	}
+
+	.page_body .block.block_01 .tab>div:last-child:after{
+
+		width:50%;
+
+	}
+	
+}
+
+@media( max-width:768px ){
+
+	.page_body .block_main .index_full_block_main .title{
+
+		margin-bottom:20px;
+
+		font-size:2.5rem;
+
+	}
+
+	.page_body .block_main .index_full_block_main .detail{
+
+		margin-bottom:30px;
+
+		font-size:.9rem;
+
+	}
+
+	.page_body .block_main .index_full_block_main .detail.last{
+
+		margin-bottom:50px;
+
+	}
+
+	.row,.page_body .block_main .index_full_block_main{
+
+		padding:0 5px;
+
+	}
+
+	.page_body .block.block_01 .tab .detail{
+
+		margin-bottom:25px;
+
+	}
+
+	.page_body .block.block_01 .title.title_01{
+
+		white-space: normal;
+
+	}
+
+	.page_body .block.block_02 .tab .table_col{
+
+		width:100%;
+
+		margin:15px 0;
+
+	}
+
+	.page_body .block.block_01 .detail.detail_01 br{
+
+		display:none;
+
+	}
+	
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test_check_form</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+</head>
+<body>
+    <form id="lalala" action="../test.php">
+    	<div>
+    		<input name="Junde" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_check_empty" data-none_verify/>
+    	</div>
+    	<div>
+                        <input name="heHeheHe01" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_group"  data-verify_group_key="Group_or" data-verify_group_type="Or" data-verify_detail_location=".group_or_detail" data-verify_detail_target="Or group " data-verify_detail_added_success="<br/>您的输入OK~~" data-verify_detail_added_fail="<br/>o(`_`)o<br/>你的输入不能为空！！！"/>
+            </div>
+            <div>
+                        <input name="heHeheHe02" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_group"  data-verify_group_key="Group_or" data-verify_detail_target="Or group  " data-verify_detail_added_success="<br/>...您的输入符合邮箱格式~~" data-verify_detail_added_fail="<br/>o(`_`)o<br/>..........<br/>你的输入必须符合邮箱格式！！！"/>
+            </div>
+            <div>
+                        <input name="heHeheHe03" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_group"  data-verify_group_key="Group_or" data-verify_detail_target="Or group  " data-verify_detail_added_success="<br/>lalalalalaa您的输入OK~~" data-verify_detail_added_fail="<br/>lalalalalala<br/>o(`_`)o<br/>你的输入不能为空！！！"/>
+            </div>
+            <div class="group_or_detail">
+                
+            </div>
+            <div>
+                        <input name="heHeheHe01" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_group_and"  data-verify_group_key="Group_and" data-verify_group_type="and" data-verify_detail_location=".group_and_detail" data-verify_detail_target="And group " data-verify_detail_added_success="<br/>您的输入OK~~" data-verify_detail_added_fail="<br/>o(`_`)o<br/>你的输入不能为空！！！"/>
+            </div>
+            <div>
+                        <input name="heHeheHe02" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_group"  data-verify_group_key="Group_and" data-verify_detail_target="And group  " data-verify_detail_added_success="<br/>...您的输入符合邮箱格式~~" data-verify_detail_added_fail="<br/>o(`_`)o<br/>..........<br/>你的输入必须符合邮箱格式！！！"/>
+            </div>
+            <div>
+                        <input name="heHeheHe03" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_group"  data-verify_group_key="Group_and" data-verify_detail_target="And group  " data-verify_detail_added_success="<br/>lalalalalaa您的输入OK~~" data-verify_detail_added_fail="<br/>lalalalalala<br/>o(`_`)o<br/>你的输入不能为空！！！"/>
+            </div>
+            <div class="group_and_detail">
+                
+            </div>
+    	<div>
+    		<input name="Heiheihei" data-verify_mode="underline" data-verify_type="check_empty,check_email" data-user_verify_type="function(){console.log( '用户自定义验证方式 ： 匿名函数  ' , arguments , this )}" data-verify_detail_target="Email " data-verify_detail_added_success="<br/>您的输入符合邮箱格式~~" data-verify_detail_added_fail="<br/>o(`_`)o<br/>你的输入必须符合邮箱格式！！！"/>
+    	</div>
+    	<div>
+    		<input name="Enenen" data-verify_mode="underline" data-verify_type="check_empty,check_telnumber" data-verify_ins_key="Junde_verify_check_telnumber" data-user_verify_type="user_verify"/>
+    		<script type="text/javascript">
+    			var user_verify = function(){
+    				console.log( '用户自定义验证方式 ： 回调函数  ' , this , arguments );
+    			}
+    		</script>
+    	</div>
+    	<div>
+    		<input name="Hehehe" data-verify_mode="underline" data-verify_type="check_allnumber" data-verify_ins_key="Junde_verify_check_allnumber"/>
+    	</div>
+    	<div>
+    		<input name="Dadada" data-verify_mode="underline" data-verify_type="check_date" data-verify_ins_key="Junde_verify_check_date"/>
+    	</div>
+    	<div>
+    		<input name="Emmm..." data-verify_mode="underline" data-verify_type="check_time" data-verify_ins_key="Junde_verify_check_time"/>
+    	</div>
+    	<div>
+    		<input name="3.1415926....." data-verify_mode="underline" data-verify_type="check_datetime" data-verify_ins_key="Junde_verify_check_datetime"/>
+    	</div>
+            <div>
+                <input name="3.141592653589793....." type="radio" value="上" data-verify_mode="toast" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_radio" data-verify_detail_location=".Group_radio_detail"/>
+                <input name="3.141592653589793....." type="radio" value="山" data-verify_mode="toast" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_radio" data-verify_detail_location=".Group_radio_detail"/>
+                <input name="3.141592653589793....." type="radio" value="打" data-verify_mode="toast" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_radio" data-verify_detail_location=".Group_radio_detail"/>
+                <input name="3.141592653589793....." type="radio" value="老" data-verify_mode="toast" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_radio" data-verify_detail_location=".Group_radio_detail"/>
+                <input name="3.141592653589793....." type="radio" value="虎" data-verify_mode="toast" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_radio" data-verify_detail_location=".Group_radio_detail" />
+            </div>
+            <div class="Group_radio_detail">
+
+            </div>
+            <div>
+                <input name="3.141592653589793....lalalalala." type="checkbox" value="1" data-verify_mode="alert" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_checkbox" data-verify_detail_location=".Group_checkbox_detail"/>
+                <input name="3.141592653589793....lalalalala." type="checkbox" value="2" data-verify_mode="alert" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_checkbox" data-verify_detail_location=".Group_checkbox_detail"/>
+                <input name="3.141592653589793....lalalalala." type="checkbox" value="3" data-verify_mode="alert" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_checkbox" data-verify_detail_location=".Group_checkbox_detail"/>
+                <input name="3.141592653589793....lalalalala." type="checkbox" value="4" data-verify_mode="alert" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_checkbox" data-verify_detail_location=".Group_checkbox_detail"/>
+                <input name="3.141592653589793....lalalalala." type="checkbox" value="5" data-verify_mode="alert" data-verify_type="check_radio" data-verify_ins_key="Junde_verify_check_checkbox" data-verify_detail_location=".Group_checkbox_detail"/>
+            </div>
+            <div class="Group_checkbox_detail">
+
+            </div>
+    	<div>
+    		<input name="Lee" data-verify_mode="underline" data-verify_type="check_file" data-verify_ins_key="Junde_verify_check_file" data-user_verify_type="user_verify_file" type="file" data-verify_custom_ins_key="check_file"/>
+    		<script type="text/javascript">
+    			var user_verify_file = function( fileList ){
+    				var handle_size = function( size ){
+    					return ( size / 1024 / 1024 ).toFixed( 2 );
+    				},max_size = 5,size = 0;
+    				return ( fileList || [] ).forEach(function( value , key ){
+    					size += handle_size( value.fileSize || 0 );
+    				}),
+    					size < max_size;
+    			}
+    		</script>
+    	</div>
+    	<div>
+    		<input name="Leeaaaaaa" data-verify_mode="underline" data-verify_type="check_image" data-verify_ins_key="Junde_verify_check_image" data-user_verify_type="user_verify_image" type="file" data-verify_custom_ins_key="check_image"/>
+    		<script type="text/javascript">
+    			var user_verify_image = function( fileList ){
+                                                  console.log( 'fileList' , fileList );
+    				var handle_size = function( size ){
+    					return ( size / 1024 / 1024 ).toFixed( 2 );
+    				},max_size = 1,size = 0;
+    				return ( fileList || [] ).forEach(function( value , key ){
+    					size += handle_size( value.fileSize || 0 );
+    				}),
+    					size < max_size;
+    			}
+    		</script>
+    	</div>
+    	<div>
+    		<input name="ennnnnnnna" data-verify_mode="underline" data-verify_type="custom_check" data-verify_ins_key="Junde_verify_custom_check" data-user_verify_type="console.log( '用户自定义验证方式 ： 单行逻辑  (复杂逻辑 不建议使用 单行调用)'  ), arguments[0] == '1234567890';"/>
+    	</div>
+            <div>
+                        <input type="submit"/>
+            </div>
+    </form>
+    <script type="text/javascript" src="./define.js"></script>
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript" src="./define_jquery.js"></script>
+    <script type="text/javascript" src="./tool.js"></script>
+    <script type="text/javascript" src="./ajax.js"></script>
+    <script type="text/javascript" src="./include.js"></script>
+    <script type="text/javascript" src="./set_style_rule.js"></script>
+    <script type="text/javascript" src="./toast.js"></script>
+    <script type="text/javascript">
+            var init = function(){
+                        var include = define.get( 'include' ),
+                                tool = define.get( 'tool' ),
+                                form = document.getElementById( 'lalala' ),
+                                file_num = 0,
+                                verify;
+                        form.onsubmit = new Function( 'return false' );
+                        include([ './putty.js' , './lang.js' , './alert.js' , './check_form.js' ],'js').set_start_callback(function(){
+                            console.log( 'start' );
+                        }).set_success_callback(function(){
+                            console.log( 'success' );
+                        }).set_error_callback(function(){
+                            console.log( 'error' );
+                        }).set_end_callback(function(){
+                            console.log( 'end' , this , arguments );
+                            form.onsubmit = function(){
+                                    var form = this;
+                                    tool.handle_try(function( err ){
+                                        console.log( err )
+                                    } , function(){
+                                            verify = define.get( 'verify' )( form ).verify();
+                                            if( file_num = verify.num )
+                                                    return false;
+                                            //无刷新提交
+                                            //verify.submit( true , [{
+                                            //      name : 'type',
+                                            //      value : 'Test'    
+                                            //}] );
+                                            //提交之后刷新
+                                            //verify.submit( function( res , event ){
+                                             //   alert( '返回值 ： \r\n' + JSON.stringify( res )  );
+                                              //  window.location.reload();
+                                            //} , [{
+                                             //       name : 'type',
+                                             //       value : 'Test 01'
+                                            //}] )
+                                            //正常 form 提交
+                                            verify.submit();
+                                    });
+                                    return false;
+                            }
+                        });
+                        include( './page.css' , 'css' );
+            }();
+    </script>
+</body>
+</html>

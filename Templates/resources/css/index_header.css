@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+@import './page.css';
+
+.page_header{
+
+	position:absolute;
+
+	z-index:1000;
+
+	top:0;
+
+	left:0;
+
+	right:0;
+
+}
+
+.page_header .header_content .selection .btn{
+
+	color:#fff;
+
+}
+
+.page_header .header_content .nav_units .nav_unit a{
+
+	color:#fff;
+
+}
+
+@media( max-width:768px ){
+
+	.page_header{
+
+		position: initial;
+
+		background-color: #080c14;
+
+	}
+
+	.page_header .menu{
+
+		background-color:transparent;
+
+	}
+	
+}
