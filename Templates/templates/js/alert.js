@@ -309,6 +309,10 @@ define( 'alert' , function( w , u ){
 						} , true );
 					}),
 					_data;
+			}, create_styleUnit_format = function( key , value ){
+				
+				return key + ':' + value + ';'; 
+				
 			}, append_common = function( dom , value ){
 				return $( dom ).append( value );
 			}, append_type_table = function( dom , value , table ){

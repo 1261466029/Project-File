@@ -155,7 +155,7 @@ define( 'toast' , function( callback ){
 					function(){
 						result.title = title.title || '';
 						result.style = handle_style( title.style || '' );
-						result[ 'class' ] = title[ 'class' ] || default_config.toast_content;
+						result[ 'class' ] = default_config.toast_content ? default_config.toast_content + ' ' + title[ 'class' ] : default_config.toast_content;
 						return result
 					},
 					function(){
@@ -172,7 +172,7 @@ define( 'toast' , function( callback ){
 			var result = '';
 			return tool.each( style , function( key , value ){
 				if( key !== u && value !== u )
-					result += ( i + ':' + ( style[ i ] || '' ) + ';' );
+					result += ( key + ':' + value + ';' );
 			} , true ),
 				result;
 		} , create_toast = function( json , context ){
