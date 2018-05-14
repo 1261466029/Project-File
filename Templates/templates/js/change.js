@@ -1,10 +1,110 @@
-define( 'toast' , function( callback ){
+define( 'change' , function( callback ){
 	return callback;
 }(function( w , u ){
 	var default_config = {
-		'context' : 'body',
-		'speed' : 500,
-		}],
+		'args' : {
+			'context' : 'body',
+			'speed' : 500
+		},
+		'query' : {
+			'trigger_target' : '[data-trigger_target]'
+		},
+		'attr' : {
+			'functions' : 'data-trigger_target',
+			'change_target' : 'data-change_target',
+			'change_index' : 'data-change_target_index',
+			'change_group_key' : 'data-change_group_key',
+			'change_event_type' : 'data-change_event_type',
+			'ajax_url' : 'data-ajax_url',
+			'ajax_param' : 'data-ajax_param',
+			'ajax_data' : 'data-ajax_data',
+			'ajax_method' : 'data-ajax_method',
+			'change_target_class' : 'data-change_target_class',
+			'change_start_callback' : 'data-change_start_callback',
+			'change_done_callback' : 'data-change_done_callback',
+			'change_after_callback' : 'data-change_after_callback',
+		},
+		'styleRules' : {
+			2 : {
+				'load' : {
+					'target' : '.load' + default_config.query.trigger_target,
+					'className' : 'load',
+					'type' : 'style',
+					'styleRules' : {
+						'overflow' : 'hidden',
+						'min-height' : '250px',
+						'perspective' : '1000px'
+					}
+				},
+				'load_after' : {
+					'target' : '.load' + default_config.query.trigger_target + ':after',
+					'type' : 'style',
+					'styleRules' : {
+						'position' : 'absolute',
+						'background' : 'rgba( 255,255,255,.95 )',
+						'top' : 0,
+						'left' : 0,
+						'right' : 0,
+						'bottom' : 0,
+						'z-index' : 100
+					}
+				},
+				'load_before' : {
+					'target' : '.load' + default_config.query.trigger_target + ':before',
+					'type' : 'style',
+					'styleRules' : {
+						'position' : 'absolute';
+						'top' : '100px',
+						'height' : '50px',
+						'left' : 0,
+						'right' : 0,
+						'margin' : 'auto',
+						'width' : '50px',
+						'z-index' : 101,
+						'animation' : 'change_animation_load_icon 1s ease 0s infinite alternate',
+						'-webkit-animation' : 'change_animation_load_icon 1s ease 0s infinite alternate',
+						'-o-animation' : 'change_animation_load_icon 1s ease 0s infinite alternate',
+						'-moz-animation' : 'change_animation_load_icon 1s ease 0s infinite alternate',
+						'-ms-animation' : 'change_animation_load_icon 1s ease 0s infinite alternate',
+						'transform-style' : 'preserve-3d',
+						'-webkit-transform-style' : 'preserve-3d',
+						'-ms-transform-style' : 'preserve-3d',
+						'-o-transform-style' : 'preserve-3d',
+						'-moz-transform-style' : 'preserve-3d'
+					},
+					'change_animation_load_icon' : {
+						'target' : 'change_animation_load_icon',
+						'actions' : [{
+							'target' : '0%',
+							'styleRules' : {
+								'background-color' : '#ff5400',
+							}
+						} , {
+							'target' : '100%',
+							'styleRules' : {
+								'background-color' : '#00ffd0',
+								'transform' : 'rotate3d( 0.2 , 1 , 0.2 , 360deg )',
+								'-webkit-transform' : 'rotate3d( 0.2 , 1 , 0.2 , 360deg )',
+								'-moz-transform' : 'rotate3d( 0.2 , 1 , 0.2 , 360deg )',
+								'-ms-transform' : 'rotate3d( 0.2 , 1 , 0.2 , 360deg )',
+								'-o-transform' : 'rotate3d( 0.2 , 1 , 0.2 , 360deg )'
+							}
+						}]
+					}
+				}
+			}
+		},
+		'functions' : {
+			'show or hide' : 0,
+			'switch' : 1,
+			'load' : 2,
+			'request' : 3
+		},
+		'event_list' : [ 'click' , 'change' ],
+		'default_load_method' : 'GET',
+		'default_group_key' : '__default__groupname',
+		'default_event_type' : 'click',
+		'active_class' : 'active',
 		'err_code' : {
 			1001 : {
 				code : 1001,
@@ -21,14 +121,14 @@ define( 'toast' , function( callback ){
 		'check_include_putty' : [ window.Map ]
 	},
 	check_putty = function(){
-		var result;
+		var result = true;
 		if( ![].forEach )
 			return false;
 		return default_config.check_include_putty.forEach(function( value ){
+			if( false === result )
+				return;
 			u === value && 
 				( result = false );
-			if( false === result )
-				return false;
 		}),
 			result;
 	};
@@ -47,8 +147,10 @@ define( 'toast' , function( callback ){
 		return parent = target.parentNode,
 			parent.removeChild( target ),
 			parent;
-	} , load_list = [],status,target,styleRules;
-	return function( json , tool , set_style_rules , $ , putty , lang ){
+	},
+	style,
+	event_type;
+	return function( json , tool , ajax , set_style_rules , $ , putty , lang ){
 		var handle_response = function( res ){
 			var response;
 			return tool.handle_try(function(){
@@ -113,100 +215,248 @@ define( 'toast' , function( callback ){
 				_node;
 		}, create_div = function( attr , html ){
 			return create( 'div' , attr , html );
+		}, handle_context = function( context ){
+			var args = default_config.args,
+				target = $( context );
+			if( target.length > 0 && tool.is_dom( target.get( 0 ) ) )
+				return target;
+			return $( args.context );
+		}, handle_speed = function(){
+			var args = default_config.args;
+			if( tool.is_number( speed ) )
+				return speed;
+			return args.speed;
 		}, handle_arguments = function( json ){
-			var _json = tool.default_object( json ),
-				result = {};
-			return result.time = handle_time( _json.time ),
-				result.title = handle_title( _json.title ),
-				result.context = handle_context( _json.context ),
-				result;
-		},handle_time = function( time ){
-			return tool.is_number( time ) && !!time ?
-				time : default_config.time;
-		},handle_title = function( title ){
-			var result = {
-				title : '',
-				style : '',
-				'class' : default_config.toast_content
-			};
-			return tool.in_case(
-					tool.is_object( title ),
-					function(){
-						result.title = title.title || '';
-						result.style = handle_style( title.style || '' );
-						result[ 'class' ] = title[ 'class' ] || default_config.toast_content;
-						return result
-					},
-					function(){
-						 result.title = title || '';
-						 return result;
-					}
-				);
-		} , handle_context = function( context ){
-			var target;
-			return target = $( context ).get( 0 ),
-				tool.is_dom( target ) ?
-					target : $( default_config.context )
-		},handle_style = function( style ){
-			var result = '';
-			return tool.each( style , function( key , value ){
-				if( key !== u && value !== u )
-					result += ( i + ':' + ( style[ i ] || '' ) + ';' );
-			} , true ),
-				result;
-		} , create_toast = function( json , context ){
-			var attr = {},
-				target;
-			return attr[ 'class' ] = json[ 'class' ],
-				attr[ 'style' ] = json[ 'style' ],
-				append( target = create_div( attr , json.title ) , $( context ).get( 0 ) ),
-				target.style.display = 'none',
-				target;
-		} , add_load_list = function(){
-			return load_list.push(function(){
-				return fn.show();
+			var data = tool.default_object( json ),
+				result = {},
+				handle_callback = new handle_args();
+			result.context = handle_context( data.context );
+			result.speed = handle_speed( data.speed );
+			return result;
+		}, query_change_target = function( context ){
+			return $( $( context ).find( default_config.query.trigger_target ) );
+		}, query_trigger_target = function( context , speed ){
+			var target = query_change_target( context ),
+				default_group_name = default_config.default_group_key,
+				result = {},
+				group_key,
+				change_type;
+			tool.each( target , function( key , value ){
+				change_type = get_change_type( value );
+				event_type = get_event_type( value );
+				group_key = get_group_key( value );
+				if( !change_type )
+					return;
+				result[ event_type ] = result[ event_type ] || {};
+				result[ event_type ][ change_type ] = result[ event_type ][ change_type ] || {};
+				( result[ event_type ][ change_type ][ group_key ] = result[ event_type ][ change_type ][ group_key ] || [] ).push( handle_change_data( change_type , value , speed ) );
+			} , true );
+			return result;
+		}, handle_change_data = function( type , target ){
+			var start_callback = get_change_start_callback( target ),
+				done_callback = get_change_done_callback( target ),
+				after_callback = get_change_after_callback( target ),
+				result = {},
+				functions_list = new functions(),
+				set_self_className = function( target ){
+					return $( target ).addClass( result.change_target_class );
+				},
+				remove_self_className = function( target ){
+					return $( target ).removeClass( result.change_target_class );
+				};
+			result.target = $( target );
+			result.start_callback = start_callback;
+			result.done_callback = done_callback;
+			result.after_callback = after_callback;
+			result.change_target_class = get_change_target_class( result.target );
+			switch( type - 0 ){
+				case 0:
+					result.change_target = $( $( get_change_target( result.target ) ).get( get_change_index( result.target ) ) );
+					result.callback = function(){
+						var bn = !has_active( result.change_target );
+						result.start_callback( result.change_target , result.target , bn );
+						functions_list[ type ]( result.change_target , speed , function(){
+							result.after_callback( result.change_target , result.target , bn );
+						} , bn );
+						bn ? 
+							set_self_className( result.change_target ) && set_active( result.change_target ) : 
+							remove_self_className( result.change_target ) && remove_active( result.change_target );
+						result.done_callback( result.change_target , result.target , bn );
+					};
+					break;
+				case 1:
+					result.change_target = $( $( result.change_target_list = $( get_change_target( result.target ) ) ).get( get_change_index( result.target ) ) );
+					result.callback = function(){
+						result.start_callback( result.change_target , result.change_target_list , result.target );
+						remove_self_className( result.change_target_list );
+						remove_active( result.change_target_list );
+						set_self_className( result.change_target );
+						set_active( result.change_target );
+						functions_list[ type ]( result.change_target , result.change_target_list , speed , function(){
+							result.after_callback( result.change_target , result.change_target_list , result.target );
+						} );
+						result.done_callback( result.change_target , result.change_target_list , result.target );
+					};
+					break;
+				case 2:
+					result.change_target = $( $( get_change_target( result.target ) ).get( get_change_index( result.target ) ) ).html( '' );
+					result.ajax_url = get_ajax_url( result.target );
+					result.ajax_param =  get_ajax_param( result.target );
+					result.default_className = default_config.styleRules[ type ].load.className;
+					result.callback = function(){
+						result.start_callback( result.change_target , result.target );
+						remove_self_className( result.change_target );
+						remove_active( result.change_target );
+						result.change_target.addClass( result.default_className );
+						functions_list[ type ]( result.ajax_url , function( res ){
+							set_self_className( result.change_target );
+							set_active( result.change_target );
+							result.change_target.removeClass( result.default_className );
+							result.after_callback( result.change_target , result.target , res );
+						} , result.ajax_param );
+						result.done_callback( result.change_target , result.target );
+					};
+					break;
+				case 3:
+					result.change_target = $( $( get_change_target( result.target ) ).get( get_change_index( result.target ) ) ).html( '' );
+					result.ajax_url = get_ajax_url( result.target );
+					result.ajax_method =  get_ajax_method( result.target );
+					result.ajax_data =  get_ajax_data( result.target );
+					result.default_className = default_config.styleRules[ type ].load.className;
+					result.callback = function(){
+						result.start_callback( result.change_target , result.target );
+						remove_self_className( result.change_target );
+						remove_active( result.change_target );
+						result.change_target.addClass( result.default_className );
+						functions_list[ type ]( result.ajax_url , result.ajax_method ,  , result.ajax_data , function( res ){
+							set_self_className( result.change_target );
+							set_active( result.change_target );
+							result.change_target.removeClass( result.default_className );
+							result.after_callback( result.change_target , result.target , res );
+						} );
+						result.done_callback( result.change_target , result.target );
+					};
+					break;
+			}
+		}, handlle_callback = function( func ){
+			var error_callback = function(){
+				result = eval( 'new Function( " return '+ func +'" )' );
+			},result;
+			tool.handle_try( error_callback , function(){
+				!tool.is_function( eval( 'result = ' + func ) ) && error_callback() ;
 			});
-		} , clear_status = function(){
-			status = 0;
-			$( target ).fadeOut();
-			if( load_list.length )
-				return setTimeout(function(){
-					load_list.shift()();
-				} , default_config.speed );
+			return result;
+		}, functions = function(){
+			this[ 0 ] = function( target , speed , callback , bn ){
+				if( !!bn )
+					$( target ).fadeIn( speed , callback );
+				else
+					$( target ).fadeOut( speed , callback );
+			};
+			this[ 1 ] = function( show_target , hide_target , speed , callback ){
+				$( hide_target ).fadeOut( 0 );
+				$( show_target ).fadeIn( speed , callback );
+			};
+			this[ 2 ] = function( url , callback , param ){
+				var method = default_config.default_load_method;
+				ajax({
+					url : url,
+					param : param,
+					type : method,
+					success : function( res ){
+						callback( res );
+					},
+					error : function(){
+						callback();
+					}
+				})
+			};
+			this[ 3 ] = function( url , method , data , callback ){
+				ajax({
+					url : url,
+					type : method,
+					data : data,
+					success : function( res ){
+						callback( res );
+					},
+					error : function(){
+						callback();
+					}
+				})
+			};
+		}, get_event_type = function( target ){
+			return $( target ).attr( default_config.attr.change_event_type ) || default_config.default_event_type;
+		}, get_group_key = function( target ){
+			return $( target ).attr( default_config.attr.change_group_key ) || default_config.default_group_key;
+		}, get_change_type = function( target ){
+			var functions_attr = default_config.attr.functions,
+				functions_list = default_config.functions
+			return functions_list[ $( target ).attr( functions_attr ) ];
+		}, get_change_target = function( target ){
+			return $( target ).attr( default_config.attr.change_target );
+		}, get_change_index = function( target ){
+			return $( target ).attr( default_config.attr.change_index );
+		}, get_change_target_class = function( target ){
+			return $( target ).attr( default_config.attr.change_target_class ) || '';
+		}, get_change_start_callback = function( target ){
+			return handlle_callback( $( target ).attr( default_config.change_start_callback ) );
+		},get_change_done_callback = function( target ){
+			return handlle_callback( $( target ).attr( default_config.change_done_callback ) );
+		},get_change_after_callback = function( target ){
+			return handlle_callback( $( target ).attr( default_config.change_after_callback ) );
+		}, get_ajax_url = function( target ){
+			return $( target ).attr( default_config.attr.ajax_url ) || '';
+		}, get_ajax_param = function( target ){
+			return $( target ).attr( default_config.attr.ajax_param ) || '';
+		}, get_ajax_data = function( target ){
+			return $( target ).attr( default_config.attr.ajax_data ) || '';
+		}, get_ajax_method = function( target ){
+			return $( target ).attr( default_config.attr.ajax_method ) || default_config.default_load_method;
+		}, set_active = function( target ){
+			return $( target ).addClass( default_config.active_class );
+		}, remove_active = function( target ){
+			return $( target ).removeClass( default_config.active_class );
+		}, has_active = function( target ){
+			return $( target ).hasClass( default_config.active_class );
+		}, init_style_rules = function(){
+			if( style )
+				return;
+			return tool.each( default_config.styleRules , function(){
+				style = set_style_rules(this);
+			} , true );
 		},
 		callback,fn,self;
 		return callback = new Function(),
 			callback.prototype = fn = {
-				init : function( _json ){
+				init : function(){
+					init_style_rules();
 					self = this;
-					var json_args = tool.assign( json , _json ),
-						args,toast;
-					this.check();
-					args = this.args = handle_arguments( json_args );
-					toast = this.toast = create_toast( args.title , args.context );
-					this.styleRules = styleRules = styleRules || set_style_rules( default_config.rules );
+					this.args = handle_arguments( json );
+					this.context = this.args.context;
+					this.speed = this.args.speed;
+					this.handle_change_target();
+					this.handle_event_callback();
 					return this;
 				},
-				show : function(){
-					if( status )
-						return add_load_list(),
-							this;
-					status = 1;
-					target = self.toast;
-					return $( self.toast ).fadeIn( default_config.speed , function(){
-						setTimeout(function(){
-							self.hide();
-						} , self.args.time );
-					} ),
-						this;
+				handle_change_target : function(){
+					this.trigger_target = query_trigger_target( this.context , this.speed );
 				},
-				hide : function(){
-					return clear_status(),
-						this;
-				},
-				remove : function(){
-					return remove( self.toast ),
-						this;
+				handle_event_callback : function(){
+					var type,change_type,group_key;
+					tool.each( this.trigger_target , function( key , value ){
+						type = key;
+						tool.each( value , function( key , value ){
+							change_type = key;
+							tool.each( value , function( key , value ){
+								group_key = key;
+								value.forEach(function( value , key ){
+									$( value.target ).on( type , function(){
+										value.callback();
+									} )
+								})
+							} )
+						} , true )
+					} , true )
 				},
 				err : function( arr ){
 					return err( this.err_code , arr ),
@@ -215,7 +465,7 @@ define( 'toast' , function( callback ){
 				check : function( ins ){
 					switch( ins ){
 						default :
-							if( !tool || !$ || !putty && false === check_putty() || !lang || !set_style_rules ){
+							if( !tool || !$ || !putty && false === check_putty() || !lang || !set_style_rules || !ajax ){
 								this.err_code = 1001;
 								if( !tool )
 									this.err( [ 'tool.js' ] );
@@ -227,6 +477,8 @@ define( 'toast' , function( callback ){
 									this.err( [ 'lang.js' ] );
 								if( !set_style_rules )
 									this.err( [ 'set_style_rules.js' ] );
+								if( !ajax )
+									this.err( [ 'ajax.js' ] );
 							}
 							break;
 					}
@@ -234,4 +486,4 @@ define( 'toast' , function( callback ){
 			},
 			new callback().init();
 	}
-}( window , void( 0 ) )) , ['tool' , 'set_style_rules' , 'jquery' , 'putty' , 'lang'] );
+}( window , void( 0 ) )) , ['tool' , 'ajax' , 'set_style_rules' , 'jquery' , 'putty' , 'lang'] );
