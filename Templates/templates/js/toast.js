@@ -142,8 +142,8 @@ define( 'toast' , function( callback ){
 				result.context = handle_context( _json.context ),
 				result;
 		},handle_time = function( time ){
-			return tool.is_number( time ) && !!time ?
-				time : default_config.time;
+			return tool.is_number( time - 0 ) ?
+				time - 0 : default_config.time;
 		},handle_title = function( title ){
 			var result = {
 				title : '',

@@ -115,6 +115,63 @@
                         <input type="submit"/>
             </div>
     </form>
+	
+	<div data-trigger_target="show or hide" data-change_target="form" data-change_start_callback="console.log( 'start' );" data-change_done_callback="console.log( 'done' );" data-change_after_callback="console.log( 'after' );" >
+		
+		show or hide
+	
+	</div>
+	
+	<div class="show_switch">
+	
+		show switch 01 now
+	
+	</div>
+	
+	<div class="show_switch" style="display:none;">
+	
+		show switch 02 now
+	
+	</div>
+	
+	<div data-trigger_target="switch" data-change_target_index="00" data-change_target=".show_switch" data-change_start_callback="console.log( 'start' );" data-change_done_callback="console.log( 'done' );" data-change_after_callback="console.log( 'after' );" >
+		
+		switch 01
+	
+	</div>
+	
+	<div data-trigger_target="switch" data-change_target_index="01" data-change_target=".show_switch" data-change_start_callback="console.log( 'start' );" data-change_done_callback="console.log( 'done' );" data-change_after_callback="console.log( 'after' );" >
+		
+		switch 02
+	
+	</div>
+	
+	<div class="load">
+	
+		lalalalalala
+		
+		load 
+	
+	</div>
+	
+	<div data-trigger_target="load" data-ajax_url="" data-ajax_param="lalala&lalala" data-change_target=".load" data-change_start_callback="console.log( 'start' );" data-change_done_callback="console.log( 'done' );" data-change_after_callback="console.log( 'after' );" >
+		
+		load
+	
+	</div>
+	
+	<div data-trigger_target="request" data-ajax_url="" data-ajax_data="Junde=name&Lee=fristname" data-ajax_method="GET" data-change_start_callback="console.log( 'start' );" data-change_done_callback="console.log( 'done' );" data-change_after_callback="console.log( 'after' );" >
+		
+		request
+	
+	</div>
+	
+	<div data-trigger_target="toast" data-toast_title="lilalala" data-change_start_callback="console.log( 'start' );" data-change_done_callback="console.log( 'done' );" data-change_after_callback="console.log( 'after' );" >
+		
+		toast
+	
+	</div>
+	
     <script type="text/javascript" src="./define.js"></script>
     <script type="text/javascript" src="./jquery.js"></script>
     <script type="text/javascript" src="./define_jquery.js"></script>
@@ -123,6 +180,7 @@
     <script type="text/javascript" src="./include.js"></script>
     <script type="text/javascript" src="./set_style_rule.js"></script>
     <script type="text/javascript" src="./toast.js"></script>
+    <script type="text/javascript" src="./change.js"></script>
     <script type="text/javascript">
             var init = function(){
                         var include = define.get( 'include' ),
@@ -165,6 +223,9 @@
                                     });
                                     return false;
                             }
+							
+							define.get( 'change' )();
+							
                         });
                         include( './page.css' , 'css' );
             }();

@@ -85,6 +85,16 @@ define( 'tool' , function( w , u ){
 			}
 			return _complete();
 		}
+		this.deep_copy = function( data ){
+			var result = this.is_array( data ) ? [] : {};
+			this.each( data , function( key , value ){
+				if( self.is_object( value ) )
+					return result[ key ] = self.deep_copy( value ),
+						u;
+				result[ key ] = value;
+			} , true);
+			return result;
+		};
 		this.in_case = function( bn , success , fail ){
 			var check_func = function( callback ){
 				return self.is_function( callback ) ?

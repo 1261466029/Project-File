@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>demo</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script type="text/javascript" src="./jquery.js"></script>
+</head>
+<body>
+
+<a href="javascript:;" style="margin:0 15px;display:inline-block;" data-trigger_target="switch" data-change_target=".switch_list" data-change_target_index="0" data-change_event_type="click" data-change_group_key="nav" data-change_done_callback="page.change_page( arguments[0] , arguments[1] , arguments[2] , arguments[3] );">
+
+	显示 include 插件demo
+
+</a>
+
+<a href="javascript:;" style="margin:0 15px;display:inline-block;" data-trigger_target="switch" data-change_target=".switch_list" data-change_target_index="1" data-change_event_type="click" data-change_group_key="nav" data-change_done_callback="page.change_page( arguments[0] , arguments[1] , arguments[2] , arguments[3] );">
+
+	显示 alert 插件demo
+
+</a>
+
+<a href="javascript:;" style="margin:0 15px;display:inline-block;" data-trigger_target="switch" data-change_target=".switch_list" data-change_target_index="2" data-change_event_type="click" data-change_group_key="nav" data-change_done_callback="page.change_page( arguments[0] , arguments[1] , arguments[2] , arguments[3] );">
+
+	显示 toast 插件demo
+
+</a>
+
+<h4 class="switch_list load_block" style="display:none;">
+
+	<p class="title">
+	
+		这里是 include 插件的 作用演示
+	
+	</p>
+
+	<p class="top">
+	
+		加载准备中...
+	
+	</p>
+
+	<span class="left">
+	
+	
+	</span>
+	
+	<span class="right">
+	
+	
+	</span>
+	
+	<span class="bottom">
+	
+	
+	</span>
+	
+	<div class="show_block">
+	
+	</div>
+
+</h4>
+
+<h4 class="switch_list alert_block" style="display:none;">
+
+	<p>
+	
+		弹窗的 标题 : <input onchange="page.example_target.input.call( this , this.value , 'header' , 'title' );" data-trigger_target="show or hide" data-change_target=".title_style" data-change_event_type="blur" data-change_group_key="title_style">
+	
+	</p>
+	
+	<div class="title_style active" style="display:none;font-size:14px;padding-left:15px;">
+	
+		<p>
+		
+			弹窗标题的 文本颜色 : <input onchange="page.example_target.input.call( this , this.value , 'header' , 'style' , 'color' );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗标题的 背景颜色 : <input onchange="page.example_target.input.call( this , this.value , 'header' , 'style' , 'background' );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗标题的 文字大小 : <input onchange="page.example_target.input.call( this , this.value , 'header' , 'style' , 'font-size' );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗标题的 类名 : <input onchange="page.example_target.input.call( this , this.value , 'header' , 'class' );">
+		
+		</p>
+	
+	</div>
+
+	<p>
+	
+		弹窗的 正文 : <input onchange="page.example_target.input.call( this , this.value , 'body' , 'title' );" data-trigger_target="show or hide" data-change_target=".body_style" data-change_event_type="blur" data-change_group_key="body_style">
+	
+	</p>
+	
+	<div class="body_style active" style="display:none;font-size:14px;padding-left:15px;">
+	
+		<p>
+		
+			弹窗正文的 文本颜色 : <input onchange="page.example_target.input.call( this , this.value , 'body' , 'style' , 'color' );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗正文的 背景颜色 : <input onchange="page.example_target.input.call( this , this.value , 'body' , 'style' , 'background' );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗正文的 文字大小 : <input onchange="page.example_target.input.call( this , this.value , 'body' , 'style' , 'font_size' );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗正文的 类名 : <input onchange="page.example_target.input.call( this , this.value , 'body' , 'class' );">
+		
+		</p>
+	
+	</div>
+
+	<p>
+	
+		弹窗的 按钮01 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'title' , false , 0 );" data-trigger_target="show or hide" data-change_target=".btns_01_style" data-change_event_type="blur" data-change_group_key="btns_01_style">
+	
+	</p>
+	
+	<div class="btns_01_style active" style="display:none;font-size:14px;padding-left:15px;">
+	
+		<p>
+		
+			弹窗按钮01的 文本颜色 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'color' , 0 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮01的 背景颜色 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'background' , 0 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮01的 文字大小 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'font_size' , 0 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮01的 宽度 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'width' , 0 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮01的 高度 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'height' , 0 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮01的 内边距 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'padding' , 0 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮01的 类名 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'class' , false , 0 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮01的 点击事件回调函数 : <textarea onchange="page.example_target.input.call( this , this.value , 'btns' , 'click' , false , 0 );"></textarea>
+		
+		</p>
+	
+	</div>
+
+	<p>
+	
+		弹窗的 按钮02 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'title' , false , 1 );" data-trigger_target="show or hide" data-change_target=".btns_02_style" data-change_event_type="blur" data-change_group_key="btns_02_style">
+	
+	</p>
+	
+	<div class="btns_02_style active" style="display:none;font-size:14px;padding-left:15px;">
+	
+		<p>
+		
+			弹窗按钮02的 文本颜色 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'color' , 1 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮02的 背景颜色 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'background' , 1 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮02的 文字大小 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'font_size' , 1 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮02的 宽度 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'width' , 1 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮02的 高度 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'height' , 1 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮02的 内边距 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'style' , 'padding' , 1 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮02的 类名 : <input onchange="page.example_target.input.call( this , this.value , 'btns' , 'class' , false , 1 );">
+		
+		</p>
+	
+		<p>
+		
+			弹窗按钮02的 点击事件回调函数 : <textarea onchange="page.example_target.input.call( this , this.value , 'btns' , 'click' , false , 1 );"></textarea>
+		
+		</p>
+	
+	</div>
+	
+	<div class="show_alert_code active" style="display:none;">
+	
+	</div>
+	
+	<button onclick="page.example_target.show_alert();" data-trigger_target="show or hide" data-change_target=".show_alert_code" data-change_event_type="click" data-change_group_key="show_alert_code">
+	
+		生成弹窗
+	
+	</button>
+
+</h4>
+<h4 class="switch_list toast_block" style="display:none;">
+
+	<p>
+	
+		toast的 标题 : <input onchange="page.example_target.input.call( this , this.value , 'title' , 'title' );" data-trigger_target="show or hide" data-change_target=".title_style" data-change_event_type="blur" data-change_group_key="title_style">
+	
+	</p>
+	
+	<div class="title_style active" style="display:none;font-size:14px;padding-left:15px;">
+	
+		<p>
+		
+			toast的标题的 文本颜色 : <input onchange="page.example_target.input.call( this , this.value , 'title' , 'style' , 'color' );">
+		
+		</p>
+	
+		<p>
+		
+			toast的标题的 背景颜色 : <input onchange="page.example_target.input.call( this , this.value , 'title' , 'style' , 'background' );">
+		
+		</p>
+	
+		<p>
+		
+			toast的标题的 文字大小 : <input onchange="page.example_target.input.call( this , this.value , 'title' , 'style' , 'font-size' );">
+		
+		</p>
+	
+		<p>
+		
+			toast的标题的 类名 : <input onchange="page.example_target.input.call( this , this.value , 'title' , 'class' );">
+		
+		</p>
+	
+	</div>
+	
+	<p>
+	
+		toast的 存在时间 : <input onchange="page.example_target.input.call( this , this.value , 'time' );">
+	
+	</p><p>
+	
+		toast的 上下文 : <input onchange="page.example_target.input.call( this , this.value , 'context' );">
+	
+	</p>
+	
+	<div class="show_toast_code active" style="display:none;">
+	
+	</div>
+	
+	<button onclick="page.example_target.show_toast();" data-trigger_target="show or hide" data-change_target=".show_toast_code" data-change_event_type="click" data-change_group_key="show_toast_code">
+	
+		生成弹窗
+	
+	</button>
+	
+</h4>
+<script type="text/javascript" src="./define.js"></script>
+<script type="text/javascript" src="./define_jquery.js"></script>
+<script type="text/javascript" src="./tool.js"></script>
+<script type="text/javascript" src="./ajax.js"></script>
+<script type="text/javascript" src="./include.js"></script>
+<script type="text/javascript" src="./alert.js"></script>
+<script type="text/javascript" src="./change.js"></script>
+<script type="text/javascript" src="./check_form.js"></script>
+<script type="text/javascript" src="./lang.js"></script>
+<script type="text/javascript" src="./putty.js"></script>
+<script type="text/javascript" src="./set_style_rule.js"></script>
+<script type="text/javascript" src="./toast.js"></script>
+<script>
+
+	var page = new function( w , u ){
+	
+		define.get( 'change' )({
+		
+			'context' : 'body',
+			
+			'speed' : '500'
+		
+		});
+		
+		var handle_input = function( data , value , key , attr , _attr , index ){
+		
+			var target = ( data[ key ] = data[ key ] || {} );
+		
+			if( !attr )
+			
+				return data[ key ] = value;
+		
+			if( index !== u )
+				
+				target = ( target[ index ] = target[ index ] || {} );
+				
+			if( attr == 'click' )
+			
+				eval( 'value = ' + value );
+				
+			if( !!value ){
+			
+				if( !_attr )
+				
+					target[ attr ] = value;
+					
+				else
+				
+					target[ attr ] = target[ attr ] || {},
+					
+					target[ attr ][ _attr ] = value;
+			
+			} else {
+			
+				if( !_attr )
+				
+					delete target[ attr ];
+					
+				else {
+				
+					target[ attr ] = target[ attr ] || {};
+					
+					delete target[ attr ][ _attr ];
+				
+				}
+			
+			}
+		
+		}
+	
+		this.examples = [];
+		
+		this.change_page = function( change_target , change_target_list , trigger_target , change_index ){
+		
+			if( this.examples[ change_index ] ){
+		
+				if( this.example_index !== u )
+				
+					this.examples[ this.example_index ].init();
+		
+				this.example_target = this.examples[ change_index ].init().execute(),
+				
+				this.example_index = change_index;
+				
+			}
+		
+		};
+		
+		this.examples[ 0 ] = new function(){
+	
+			this.init = function(){
+			
+				this.init_data();
+				
+				return this;
+			
+			}
+			
+			this.init_data = function(){
+			
+				this.data = {
+				
+					left : $( '.left' ),
+					right : $( '.right' ),
+					top : $( '.top' ),
+					bottom : $( '.bottom' ),
+					show_block : $( '.show_block' ).html( '' ),
+					
+					timeout : 500,
+					text : {
+						
+						'load_start' : {
+						
+							'top' : '开始加载',
+							'left' : '目前已加载 ：  [loaded_num]  项',
+							'right' : '共有  [all_load_num]  项',
+							'bottom' : '<br/>加载失败  [error_loaded_num]  项  (error_loaded_num) => {<br/>第  [error_loaded_index]  项 加载失败！共发生  [error_loaded_num]  次错误 dom已打印 ...} '
+						
+						},
+						
+						'load_ing' : {
+						
+							'left' : '目前加载 ：  [loaded_num]  项'
+						
+						},
+						
+						'load_error' : {
+						
+							'bottom' : '<br/>第  [error_loaded_index]  项 加载失败！共发生  [error_loaded_num]  次错误 dom已打印 ...'
+						
+						},
+						
+						'load_done' : {
+						
+							'top' : '加载完成'
+						
+						}
+					
+					},
+					code : {
+					
+						'status' : 0,
+						'type' : '',
+						'init_start_num' : 0,
+						'loaded_num' : 0,
+						'all_load_num' : 0,
+						'error_loaded_index' : '',
+						'error_loaded_num' : 0
+					
+					}
+				
+				};
+			
+			}
+			
+			this.execute = function(){
+			
+				var data = this.data, 
+				
+					split_string = function( str ){
+					
+						return ( 'string' == typeof str ? str : '' ).replace( /\s\(([a-zA-Z0-9\_]+)\)\s\=\>\s\{([^\}]+)\}/ , function( a , b , c ){
+						
+							if( !!data.code[ b ] )
+							
+								return c;
+								
+							return '';
+						
+						} ).replace( /\s\[([a-zA-Z0-9\_]+)\]\s/g , function(a,b){
+						
+							return data.code[ b ];
+						
+						} );
+					
+					}, 
+					
+					callback = function(){
+					
+						var type = data.text[ data.code.status ] || [],
+							i = 0;
+						
+						for( i in type ){
+						
+							$( data[ i ] ).html( split_string( type[ i ] ) );
+						
+						}
+					
+					},
+					
+					include_callback = function( list , type , param ){
+						
+						if( data.code.status && data.code.status != 'load_done' )
+						
+							return setTimeout( function(){
+							
+								include_callback( list , type , param );
+							
+							} , data.timeout );
+							
+						data.code.status = 'load_start';
+							
+						data.code.type = type;
+						
+						//这里是 include.js 的真正调用 
+						//三个参数 ： list,type,param  => list 是加载项集合 ， type 是加载项类型 可选参数 ('post','get','html','js','css','image') param 是请求参数 (该参数只为链接后的get参数)
+						//回调函数 ： set_start_callback => 设置加载函数调用开始的回调函数 可用参数( loaded , all ) => loaded:已加载项数目(包含加载失败项),all:需要的总加载数
+						//			  set_success_callback => 设置加载成功的回调函数 可用参数( target , index , loaded , all ) => target:加载项的调用载体 如(script标签,link标签,img标签或者一长串的文本或JSON格式的返回值...),index:加载项的下标,loaded:已加载项数目(包含加载失败项),all:需要的总加载数
+						//			  set_error_callback => 设置加载失败的回调函数可用参数( target , index , loaded , all ) => target:加载项的调用载体 如(script标签,link标签,img标签...),index:加载项的下标,loaded:已加载项数目(包含加载失败项),all:需要的总加载数
+						//			  set_end_callback => 设置加载函数调用结束的回调函数 可用参数( loaded , all ) => loaded:已加载项数目(包含加载失败项),all:需要的总加载数
+						//			  set_handle_param_callback => 设置加载完成之后 加载成功或加载失败的回调函数中 参数target的改变 可用参数( target , index , type ) => target:加载项的调用载体 如(script标签,link标签,img标签或者一长串的文本或JSON格式的返回值...),index:加载项的下标,type:success(成功)或error(失败)
+						//			  set_change_target => 设置加载成功之后 target(加载项的调用载体) append 至dom节点的父级节点
+						//以上的 回调参数 不是必须要调用 可以不调用或只调用几个 以达到想要的效果 
+						define.get( 'include' )( list , type , param )
+						
+						.set_start_callback(function( loaded , all ){
+							
+							data.code.loaded_num += loaded;
+							
+							data.code.all_load_num += all;
+							
+							callback();
+							
+						}).set_success_callback(function( target , index , loaded , all ){
+						
+							data.code.status = 'load_ing';
+							
+							data.code.loaded_num ++;
+							
+							callback();
+						
+						}).set_error_callback(function( target , index , loaded , all ){
+						
+							var arr;
+							
+							data.code.status = 'load_error';
+							
+							( arr = data.code.error_loaded_index ? data.code.error_loaded_index.split( ',' ) : [] ).push( loaded + data.code.init_start_num );
+							
+							data.code.error_loaded_index = arr.join( ',' );
+							
+							data.code.error_loaded_num ++;
+							
+							callback();
+							
+							console.warn( target );
+							
+						}).set_end_callback(function( loaded , all ){
+							
+							data.code.status = 'load_done';
+							
+							callback();
+							
+							data.code.init_start_num += all;
+						
+						}).set_handle_param_callback(function( target , index , type ){
+						
+							return data.code.type == 'html' ?
+							
+								$('<div>').html( target ) : target;
+						
+						}).set_change_target( data.show_block );
+					
+					};
+		
+				include_callback( 'http://tbclaims.com/resource/home/library/js/bootstrap.min.js' , 'js' );
+				
+				include_callback( [ 'http://tbclaims.co/uploads/slide/20180224/15194491401489.jpg' , 'http://tbclaims.com/./uploads/slide/20180228/15197850232621.jpg' , 'http://tbclaims.com/uploads/slide/20180228/15198241989978.jpg' , 'http://tbclaims.com/./uploads/slide/20180208/15180861612800.JPG' , 'http://tbclaims.com/./uploads/slide/20180208/15180862051968.JPG' , 'http://tbclaims.com/./uploads/slide/20180224/15194507465668.jpg' , 'http://tbclaims.com/./uploads/slide/20180228/15198247054802.jpg' , 'http://tbclaims.com/./uploads/slide/20180224/15194519979344.JPG' , 'http://tbclaims.com/./uploads/slide/20180224/15194516142279.jpg' ] , 'image' );
+				
+				include_callback( [ "http://tbclaims.com/resource/home/library/css/bootstrap.min.css" ] , 'css' );
+				
+				include_callback( [ '/' ] , 'html' );
+				
+				include_callback( [ '/aaa' ] , 'get' , {
+				
+					'Junde' : 123,
+					
+					'Lee' : 456,
+					
+					'lilalala' : 789
+				
+				} );
+				
+				include_callback( [ '/' ] , 'post' , {
+				
+					'Junde' : 333,
+					
+					'Lee' : 111,
+					
+					'lilalala' : 222
+				
+				} );
+				
+				return this;
+			
+			}
+			
+		}();
+		
+		this.examples[ 1 ] = new function(){
+		
+			var self = this;
+		
+			this.init = function(){
+			
+				this.init_data();
+			
+				return this;
+				
+			};
+			
+			this.init_data = function(){
+			
+				this.data = {
+				
+					alert_data : {},
+					
+					show_alert_code : $( '.show_alert_code' ),
+					
+					alert_speed : 500,
+					
+					alert_block : $( '.alert_block' ),
+					
+					alert_txt : '参数列表已打印...'
+				
+				};
+			
+			}
+			
+			this.execute = function(){
+			
+				return this;
+			
+			}
+			
+			this.show_alert = function(){
+			
+				define.get( 'alert' )( self.data.alert_data ).show( self.data.alert_speed );
+				
+				this.data.show_alert_code.html( this.data.alert_txt )
+				
+				console.log( self.data.alert_data );
+			
+			};
+			
+			this.input = function( value , key , attr , _attr , index ){
+			
+				handle_input( self.data.alert_data , value , key , attr , _attr , index );
+			
+			};
+		
+		}();
+		
+		this.examples[ 2 ] = new function(){
+		
+			var self = this;
+		
+			this.init = function(){
+			
+				this.init_data();
+			
+				return this;
+				
+			};
+			
+			this.init_data = function(){
+			
+				this.data = {
+				
+					toast_data : {},
+					
+					show_toast_code : $( '.show_toast_code' ),
+					
+					toast_block : $( '.toast_block' ),
+					
+					toast_txt : '参数列表已打印...'
+				
+				};
+			
+			}
+			
+			this.execute = function(){
+			
+				return this;
+			
+			}
+			
+			this.show_toast = function(){
+			
+				define.get( 'toast' )( self.data.toast_data ).show();
+				
+				this.data.show_toast_code.html( this.data.toast_txt )
+				
+				console.log( self.data.toast_data );
+			
+			};
+			
+			this.input = function( value , key , attr , _attr , index ){
+			
+				handle_input( self.data.toast_data , value , key , attr , _attr , index );
+			
+			};
+		
+		}()
+	
+	}( window , void(0) );
+
+</script>
+</body>
+</html>

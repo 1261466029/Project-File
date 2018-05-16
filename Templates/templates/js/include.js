@@ -125,7 +125,7 @@ define( 'include' , function( w , u ){
 						href : href
 					}).one( 'load' , tool.default_function( load ) ).one( 'error' , tool.default_function( error ) ).appendTo( 'body' ).get( 0 );*/
 				},
-				create_image = function( sec , load , error ){
+				create_image = function( src , load , error ){
 					return $( '<img>' ).attr( 'src' , src ).one( 'load' , tool.default_function( load ) ).one( 'error' , tool.default_function( error ) ).get( 0 );
 				};
 				this[ 0 ] = function( url , success , error ){

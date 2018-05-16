@@ -472,7 +472,7 @@ define( 'alert' , function( w , u ){
 					}
 				},
 				handle_arguments : function(){
-					var _json = tool.is_object( json ) ? json : {},
+					var _json = tool.deep_copy( tool.is_object( json ) ? json : {} ),
 						config = build_default_config(),
 						result = {},
 						check_arg_format = function( data , value ){

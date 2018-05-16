@@ -33,9 +33,6 @@ define( 'ajax' , function( w , u ){
 	},
 	console_log = function( txt ){
 		console.log( txt );
-	},
-	is_FormData = function( data ){
-		return "[object FormData]" == data.__proto__.toString();
 	};
 	return function( callback ){
 		return callback;
@@ -49,6 +46,9 @@ define( 'ajax' , function( w , u ){
 					result[ key ] = handle( value , json[ key ] );
 				} , true ),
 				result;
+			},
+			is_FormData = function( formdata ){
+				return tool.is_type( formdata , '[object FormData]' )
 			},
 			handle = function( index , value ){
 				switch( index ){
