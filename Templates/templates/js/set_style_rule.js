@@ -117,7 +117,6 @@ define( 'set_style_rules' , function( w , u ){
 						var styleText = '';
 						return tool.each( styleKeyframes , function( key , value ){
 							styleText += value + data.target + styleLeft;
-							console.log( data )
 							tool.each( data.actions , function( key , value ){
 								styleText += value.target + styleLeft;
 								tool.each( value.styleRules , function( key , value ){
