@@ -28,6 +28,12 @@
 
 </a>
 
+<a href="javascript:;" style="margin:0 15px;display:inline-block;" data-trigger_target="switch" data-change_target=".switch_list" data-change_target_index="3" data-change_event_type="click" data-change_group_key="nav" data-change_done_callback="page.change_page( arguments[0] , arguments[1] , arguments[2] , arguments[3] );">
+
+	显示 change 插件demo
+
+</a>
+
 <h4 class="switch_list load_block" style="display:none;">
 
 	<p class="title">
@@ -316,6 +322,63 @@
 	
 	</button>
 	
+</h4>
+<h4 class="switch_list" style="display:none;">
+
+	<p class="change_show_hide">
+	
+		<img src='http://tbclaims.com/uploads/slide/20180224/15194491401489.jpg'/>
+		
+		<img style="display:none" class="active" src='http://tbclaims.com/./uploads/slide/20180228/15197850232621.jpg'/>
+	
+		<img style="display:none" class="active" src='http://tbclaims.com/uploads/slide/20180228/15198241989978.jpg'>
+		
+		<a href="javascript:;" data-trigger_target="show or hide" data-change_target=".change_show_hide img" data-change_target_index="0" data-change_event_type="click" data-change_group_key="change_show_hide" data-change_done_callback="!arguments[3]?arguments[1].html( 'show block 01' ):arguments[1].html( 'hide block 01' )"> show&hide block 01 </a>
+	
+		<a href="javascript:;" data-trigger_target="show or hide" data-change_target=".change_show_hide img" data-change_target_index="1" data-change_event_type="click" data-change_group_key="change_show_hide" data-change_done_callback="!arguments[3]?arguments[1].html( 'show block 02' ):arguments[1].html( 'hide block 02' )"> show&hide block 02 </a>
+		
+		<a href="javascript:;" data-trigger_target="show or hide" data-change_target=".change_show_hide img" data-change_target_index="2" data-change_event_type="click" data-change_group_key="change_show_hide" data-change_done_callback="!arguments[3]?arguments[1].html( 'show block 03' ):arguments[1].html( 'hide block 03' )"> show&hide block 03 </a>
+		
+	</p>
+
+	<p class="change_switch">
+	
+		<img style="display:none;" src='http://tbclaims.com/uploads/slide/20180224/15194491401489.jpg'/><img class="active" src='http://tbclaims.com/./uploads/slide/20180228/15197850232621.jpg'/><img style="display:none;" src='http://tbclaims.com/uploads/slide/20180228/15198241989978.jpg'>
+		
+		<a href="javascript:;" data-trigger_target="switch" data-change_target=".change_switch img" data-change_target_index="0" data-change_event_type="click" data-change_group_key="change_switch"> switch block 01 </a>
+	
+		<a href="javascript:;" data-trigger_target="switch" data-change_target=".change_switch img" data-change_target_index="1" data-change_event_type="click" data-change_group_key="change_switch"> switch block 02 </a>
+
+		<a href="javascript:;" data-trigger_target="switch" data-change_target=".change_switch img" data-change_target_index="2" data-change_event_type="click" data-change_group_key="change_switch"> switch block 03 </a>
+		
+	</p>
+
+	<p class="change_load">
+	
+		<div class="change_show_load">
+		
+		</div>
+		
+		<a href="javascript:;" data-trigger_target="load" data-ajax_url="./load.html" data-ajax_param="lalala&lalala" data-change_target=".change_show_load" data-change_after_callback="console.log( arguments[3] )" > load </a>
+		
+	</p>
+
+	<p class="change_request">
+	
+		<div class="change_request_block">
+		
+		</div>
+		
+		<a href="javascript:;" data-trigger_target="request" data-ajax_url="./request.php" data-ajax_data="Junde=name&Lee=fristname" data-change_target=".change_request_block" data-ajax_method="GET" data-change_after_callback="arguments[3] && arguments[3].status == 1 ? arguments[0].html( 'ajax success , response is ' + JSON.stringify( arguments[3] ) ) : arguments[0].html( 'error' )" > Request </a>
+		
+	</p>
+
+	<p class="change_toast">
+		
+		<a href="javascript:;" data-trigger_target="toast" data-toast_title="change toast" > Show toast </a>
+		
+	</p>
+
 </h4>
 <script type="text/javascript" src="./define.js"></script>
 <script type="text/javascript" src="./define_jquery.js"></script>
